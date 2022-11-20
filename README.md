@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 # Locus-ML
 Repository for background material for a submission on Using Machine Learning to Predict the Correlation of Spectra Using SDSS Colour Magnitudes as an Improvement to the Locus Algorithm.
-=======
-# AandA-2022-Locus-ML
-Repository for background material for Astronomy and Astrophysics Publication on Using Machine Learning to Predict the Correlation of Spectra Using SDSS Colour Magnitudes as an Improvement to the Locus Algorithm.
->>>>>>> 56ee7cf87d3cd6823cfdcd1eda23dab6af5f145e
+
 
 It contains R and SQL source code, SDSS downloaded data files, and the main machine models that were created.
 
