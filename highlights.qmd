@@ -1,0 +1,13 @@
+---
+title: "Using Machine Learning to Predict the Correlation of Spectra Using SDSS Colour Magnitudes as an Improvement to the Locus Algorithm"
+author: Eugene Hickey, Oisin Creaner, Kevin Nolan, and Tom O'Flynn
+format: pdf
+editor: visual
+---
+
+
+### Highlights
+
+- Correlations between stellar spectra can be estimated using colour magnitude values.
+- The application of machine learning models leads to an improvement in colourmatching stellar spectra compared to previous implementations of the Locus Algorithm.
+- Stars classified as Cataclysmic Variables performed poorly in these models. This is connected to the presence of strong emission lines in their spectra.
