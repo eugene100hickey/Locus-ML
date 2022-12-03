@@ -80,7 +80,7 @@ svm <- train(cor_logit~., data = trainingTransformed,
               tuneGrid = tuneGrid)
 (t2 <- Sys.time())
 t2-t1
-svm1 <- readRDS("models/by-model/svr-new/svr-C20-sigma012-3_60mins")
+svm1 <- readRDS("R/models/SVR/svr-C20-sigma012-3_60mins")
 svm1
 
 # SVR trained on training set with no CV's
@@ -97,7 +97,7 @@ svm_no_cv <- train(cor_logit~., data = training_cleanedTransformed,
              tuneGrid = tuneGrid)
 (t2 <- Sys.time())
 t2-t1
-saveRDS(svm_no_cv, "models/by-model/svr-new/svr-clean-C20-sigma012-noCV-4_7min")
+saveRDS(svm_no_cv, "R/models/SVR/svr-C20-sigma012-3_60mins_no_CV")
 svm_no_cv
 
 # fit on the test set

@@ -22,7 +22,7 @@ theme_clean <- function() {
           legend.text = element_text(size = 16))
 }
 
-z1 <- read_csv("data/clean/train-test-3556.csv") |> 
+z1 <- read_csv("data/train-test-3556.csv") |>
   mutate(cor_logit = gtools::logit(cor, min = -1, max = 1))
 
 
@@ -50,7 +50,7 @@ tg <- expand.grid(shrinkage = 0.1,
                   interaction.depth = c(10),
                   n.minobsinnode = c(10),
                   n.trees = c(1000))
-tg <- expand.grid(shrinkage = seq(0.1, 0.5, by = 0.2), 
+tg <- expand.grid(shrinkage = seq(0.1, 0.5, by = 0.2),
                   interaction.depth = c(1, 5, 10),
                   n.minobsinnode = c(2, 5, 10),
                   n.trees = c(100, 300, 500))
@@ -60,15 +60,15 @@ gbm1<- train(cor_logit~., data = trainTransformed,
 (t2 <- Sys.time())
 t2-t1
 gbm1
-# gbm1 <- readRDS("models/devgenius/gbm1")
+
 plot(gbm1)
 gbm1pred<-predict(gbm1, testTransformed)
-gbm1values<-data.frame(obs=testTransformed$cor_logit, 
-                       pred=gbm1pred, 
+gbm1values<-data.frame(obs=testTransformed$cor_logit,
+                       pred=gbm1pred,
                        res=gbm1pred-testTransformed$cor_logit)
 defaultSummary(gbm1values)
 theme_set(theme_bw())
-gbm1values |> 
+gbm1values |>
   ggplot(aes(res)) +
   geom_histogram(aes(y = ..density..),
                  colour = 1, fill = "white", bins = 50) +
@@ -78,10 +78,10 @@ gbm1values |>
   theme(axis.title.y = element_blank(),
         axis.text.y = element_blank())
 ggplot(gbm1values, aes(obs,
-                       pred, 
+                       pred,
                        colour=res)) +
-  geom_point(alpha=0.9) + 
-  geom_smooth(se=FALSE,colour="red", linetype="dashed", size=0.5)+ 
+  geom_point(alpha=0.9) +
+  geom_smooth(se=FALSE,colour="red", linetype="dashed", size=0.5)+
   geom_abline(slope=1, linetype="dashed")
 qqplot(gbm1values$pred, gbm1values$obs)
 

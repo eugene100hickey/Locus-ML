@@ -5,9 +5,9 @@ format: pdf
 editor: visual
 ---
 
-
 ### Highlights
 
+- Differential photometry performs best when comparison stars have similar spectra to the target star.
 - Correlations between stellar spectra can be estimated using colour magnitude values.
-- The application of machine learning models leads to an improvement in colourmatching stellar spectra compared to previous implementations of the Locus Algorithm.
-- Stars classified as Cataclysmic Variables performed poorly in these models. This is connected to the presence of strong emission lines in their spectra.
+-   The application of machine learning models leads to an improvement in colour matching stellar spectra compared to previous implementations of the Locus Algorithm.
+-   Stars classified as Cataclysmic Variables performed poorly in these models. This is connected to the presence of strong emission lines in their spectra.

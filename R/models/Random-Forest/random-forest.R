@@ -3,7 +3,7 @@ library(caret)
 
 set.seed(42)
 
-z1 <- read_csv("data/clean/train-test-3556.csv") |> 
+z1 <- read_csv("data/train-test-3556.csv") |>
   mutate(cor_logit = gtools::logit(cor, min = -1, max = 1))
 
 
@@ -33,13 +33,13 @@ rf1 <- train(cor_logit~., data = trainTransformed,
 (t2 <- Sys.time())
 t2-t1
 
-saveRDS(rf1, "models/publication/rf-minnode-5-mtry-6-5_79min")
+saveRDS(rf1, "R/models/Random-Forest/rf-minnode-5-mtry-6-5_79min")
 
 rf1$results
 
 rf1pred<-predict(rf1$finalModel, testTransformed)$predictions
-rf1values<-data.frame(obs=testTransformed$cor_logit, 
-                      pred=rf1pred, 
+rf1values<-data.frame(obs=testTransformed$cor_logit,
+                      pred=rf1pred,
                       res=rf1pred-testTransformed$cor_logit)
 yardstick::metrics(data = rf1values, truth = obs, estimate = pred)
 defaultSummary(rf1values)

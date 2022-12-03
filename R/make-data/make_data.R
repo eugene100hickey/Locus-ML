@@ -110,5 +110,3 @@ z2 <- z1 |>
   filter(!duplicated(objid), !duplicated(objid1)) |>
   filter(!(objid1 %in% objid), !(objid %in% objid1)) |>
   filter(!(specobjid1 %in% specobjid), !(specobjid %in% specobjid1))
-
-write_csv("data/my-data-file.csv")

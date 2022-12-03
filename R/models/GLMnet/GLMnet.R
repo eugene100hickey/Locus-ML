@@ -3,7 +3,7 @@ library(caret)
 
 set.seed(42)
 
-z1 <- read_csv("data/clean/train-test-3556.csv") |> 
+z1 <- read_csv("data/train-test-3556.csv") |>
   mutate(cor_logit = gtools::logit(cor, min = -1, max = 1))
 
 tr <- trainControl(method = "repeatedcv",
@@ -29,11 +29,11 @@ glmnet1 <- train(cor_logit~., data=trainTransformed,
              method = "glmnet",trControl=tr)
 (t2 <- Sys.time())
 t2-t1
-saveRDS(glmnet1, "models/by-model/glmnet-new/glmnet-0_2min")
+saveRDS(glmnet1, "R/models/GLMnet/glmnet-0_2min")
 summary(glmnet1)
 fitted <- predict(glmnet1)
 glmpred1 <- predict(glmnet1, testTransformed)
-lmvalues1 <- data.frame(obs = testTransformed$cor_logit, 
+lmvalues1 <- data.frame(obs = testTransformed$cor_logit,
                       pred = glmpred1,
                       res = glmpred1 - testTransformed$cor_logit)
 
